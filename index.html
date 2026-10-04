@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>برای معلمی که نمی‌خواستیم دلش را بشکنیم</title>
+<meta name="description" content="یک عذرخواهی از طرف دانش‌آموزان نهم شهید رجایی">
+<meta name="theme-color" content="#faf7f0">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@200;300;400;500&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#faf7f0; --ink:#1d1d1b; --soft:#4a4a45;
+  --green:#2f4a3a; --olive:#6b7a4f; --gold:#b89a5a; --deep:#10201a;
+  --font:"Vazirmatn","Vazir","Tahoma",system-ui,sans-serif;
+  --arabic:"Amiri","Scheherazade New","Traditional Arabic",serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--font);font-weight:300;line-height:2.2;font-size:clamp(1.02rem,.95rem + .35vw,1.2rem);overflow-x:hidden}
+::selection{background:rgba(47,74,58,.18)}
+a,button{font-family:inherit}
+:focus-visible{outline:2px solid var(--green);outline-offset:4px;border-radius:4px}
+
+/* progress */
+#bar{position:fixed;top:0;right:0;height:2px;width:100%;background:var(--green);transform-origin:right;transform:scaleX(0);z-index:50;opacity:.7}
+
+/* loader */
+#loader{position:fixed;inset:0;background:var(--bg);z-index:100;display:grid;place-items:center;transition:opacity 1s ease,visibility 1s}
+#loader i{display:block;width:60px;height:1px;background:var(--green);transform-origin:right;animation:ld 1.2s ease-in-out infinite alternate}
+@keyframes ld{from{transform:scaleX(.15);opacity:.4}to{transform:scaleX(1);opacity:1}}
+body.ready #loader{opacity:0;visibility:hidden}
+
+/* sections */
+section{position:relative;padding:clamp(7rem,18vh,12rem) 1.6rem;display:flex;flex-direction:column;align-items:center}
+.wrap{width:100%;max-width:34rem}
+h2{font-weight:500;font-size:clamp(1.6rem,1.2rem + 2vw,2.5rem);line-height:1.7;color:var(--green);margin-bottom:2.6rem;letter-spacing:0}
+p{margin-bottom:1.9rem;color:var(--ink)}
+p:last-child{margin-bottom:0}
+
+/* reveals */
+.js .rv{opacity:0;transform:translateY(16px);filter:blur(6px);transition:opacity 1.4s ease,transform 1.4s cubic-bezier(.2,.7,.2,1),filter 1.4s ease}
+.js .rv.in{opacity:1;transform:none;filter:none}
+.tw .w{opacity:0;transition:opacity .7s ease}
+.tw .w.on{opacity:1}
+.js .tw{opacity:1}
+
+/* hero */
+#hero{min-height:100svh;justify-content:center;text-align:center;padding-top:6rem;padding-bottom:6rem;background:radial-gradient(ellipse at 50% 40%,#fffdf8 0%,var(--bg) 70%)}
+#particles{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+#hero h1{position:relative;font-weight:200;font-size:clamp(2.5rem,1.4rem + 6vw,5.4rem);line-height:1.55;color:var(--ink)}
+.sub{position:relative;margin-top:2.4rem;color:var(--soft);font-size:1.05em}
+.rule{width:44px;height:1px;background:var(--gold);margin:2.4rem auto 0;position:relative}
+.read{position:absolute;bottom:max(2.2rem,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);color:var(--green);text-decoration:none;font-size:.95rem;padding:.7rem 1.4rem;border:1px solid rgba(47,74,58,.35);border-radius:999px;transition:background .5s,color .5s,border-color .5s,gap .4s;display:inline-flex;flex-direction:column;align-items:center;line-height:1.6}
+.read:hover{background:var(--green);color:var(--bg)}
+.read::after{content:"";width:1px;height:18px;background:currentColor;margin-top:.3rem;opacity:.6}
+
+/* accident */
+.slip{display:block;width:120px;height:20px;margin:0 0 2.6rem;overflow:visible}
+.slip path{fill:none;stroke:var(--gold);stroke-width:1.2;stroke-linecap:round;stroke-dasharray:160;stroke-dashoffset:160;opacity:.8}
+.slip.in path{animation:slip 3.2s ease forwards}
+@keyframes slip{0%{stroke-dashoffset:160;opacity:.8}55%{stroke-dashoffset:0;opacity:.8}100%{stroke-dashoffset:0;opacity:.12}}
+
+/* not for grade */
+#grade{overflow:hidden}
+#ghost{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-weight:200;font-size:clamp(9rem,40vw,26rem);color:var(--green);opacity:.06;line-height:1;pointer-events:none;white-space:nowrap;will-change:opacity,transform}
+#grade .wrap{position:relative}
+.key{font-weight:400;font-size:1.12em;color:var(--green)}
+
+/* teacher */
+#teacher{background:linear-gradient(180deg,var(--bg),#f4efe2 30%,#f4efe2 70%,var(--bg))}
+.photo{margin:0 0 3rem;text-align:center}
+.photo img{max-width:min(18rem,80%);height:auto;border-radius:2px;border:1px solid rgba(184,154,90,.5);padding:.5rem;background:#fffdf8}
+
+/* wish */
+#wish{min-height:100svh;justify-content:center;text-align:center;overflow:hidden}
+#wish .glow{position:absolute;left:50%;top:50%;width:min(90vw,44rem);aspect-ratio:1;transform:translate(-50%,-50%) scale(.6);background:radial-gradient(circle,rgba(214,176,98,.28),rgba(214,176,98,0) 65%);opacity:0;transition:opacity 3s ease,transform 4s ease;pointer-events:none}
+#wish.lit .glow{opacity:1;transform:translate(-50%,-50%) scale(1)}
+#wish .wrap{position:relative;max-width:30rem}
+#wish p{font-size:1.1em;line-height:2.5}
+
+/* ayah */
+#ayah{background:var(--deep);color:#efe9d8;text-align:center;min-height:100svh;justify-content:center;overflow:hidden}
+#ayah::before{content:"";position:absolute;left:50%;top:48%;width:min(100vw,50rem);aspect-ratio:1;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(184,154,90,.16),rgba(184,154,90,0) 62%);pointer-events:none}
+#ayah h2{color:var(--gold);font-size:clamp(1.1rem,1rem + .6vw,1.35rem);font-weight:400;margin-bottom:2rem}
+#ayah .wrap{position:relative;max-width:40rem}
+.star{display:block;margin:0 auto 2rem;width:34px;height:34px;opacity:.75}
+.star path{fill:none;stroke:var(--gold);stroke-width:1}
+.ln{display:block;width:1px;height:56px;background:linear-gradient(var(--gold),transparent);margin:0 auto 2.2rem;opacity:.6}
+.quran{font-family:var(--arabic);font-size:clamp(1.9rem,1.2rem + 3.6vw,3.3rem);line-height:2.1;color:#f6f0dc;margin:0 0 1.6rem;font-weight:400}
+.ref{color:var(--gold);font-size:.9rem;margin-bottom:2.2rem;color:#c9ad6d}
+.tr{color:#efe9d8;opacity:.9;margin:0}
+.js #ayah .rv{filter:blur(12px);transition-duration:2.6s}
+.js #ayah .rv.in{filter:none}
+
+
+.rahbar{margin-top:3.2rem;padding-top:2.6rem;border-top:1px solid rgba(184,154,90,.35)}
+.qt{font-size:1.1em;line-height:2.3;color:#efe9d8;margin-bottom:1rem}
+.who{color:#c9ad6d;font-size:.9rem;margin:0}
+.credit{margin-top:4rem;font-size:.7rem;font-weight:200;color:var(--soft);opacity:.85;letter-spacing:.02em}
+
+/* last words */
+#last{text-align:right;padding-top:clamp(8rem,22vh,14rem)}
+#last p{line-height:2.5}
+.gap{height:1.2rem}
+
+/* finale */
+#end{text-align:center;padding-bottom:clamp(6rem,14vh,9rem);min-height:90svh;justify-content:center;position:relative;overflow:hidden}
+.quote{font-weight:300;font-size:clamp(1.55rem,1.1rem + 2.4vw,2.8rem);line-height:2;color:var(--green);max-width:40rem;margin-bottom:4rem}
+.sign{color:var(--soft);margin-bottom:2.6rem}
+.send{background:none;border:1px solid var(--green);color:var(--green);font-size:1rem;padding:.8rem 2.2rem;border-radius:999px;cursor:pointer;transition:background .5s,color .5s,transform .4s;min-height:44px}
+.send:hover{background:var(--green);color:var(--bg)}
+.send:active{transform:scale(.97)}
+.thanks{margin-top:2rem;color:var(--soft);min-height:2.4em;opacity:0;transition:opacity 1.6s ease}
+.thanks.show{opacity:1}
+#spread{position:absolute;left:50%;top:70%;width:20px;height:20px;border-radius:50%;background:radial-gradient(circle,rgba(214,176,98,.45),rgba(214,176,98,0) 70%);transform:translate(-50%,-50%) scale(0);opacity:0;pointer-events:none}
+#spread.go{animation:spread 3.2s ease-out forwards}
+@keyframes spread{0%{transform:translate(-50%,-50%) scale(0);opacity:.9}100%{transform:translate(-50%,-50%) scale(60);opacity:0}}
+
+
+.heart{background:none;border:0;cursor:pointer;font-size:3.6rem;line-height:1;margin-top:2.2rem;min-width:72px;min-height:72px;transition:transform .4s ease}
+.heart:hover{transform:scale(1.15)}
+.heart:active{transform:scale(.92)}
+.drop{position:fixed;top:-3rem;z-index:70;pointer-events:none;line-height:1;animation:fall linear forwards;will-change:transform,opacity}
+@keyframes fall{0%{opacity:0;transform:translate3d(0,0,0) rotate(0)}8%{opacity:1}85%{opacity:1}100%{opacity:0;transform:translate3d(var(--dx),112vh,0) rotate(var(--r))}}
+
+/* music + cursor */
+#music{position:fixed;bottom:max(1rem,env(safe-area-inset-bottom));right:1rem;z-index:40;background:rgba(250,247,240,.8);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(47,74,58,.25);color:var(--green);font-size:.78rem;padding:.45rem .9rem;border-radius:999px;cursor:pointer;min-height:36px;opacity:.75;transition:opacity .4s}
+#music:hover,#music[aria-pressed="true"]{opacity:1}
+#music[aria-pressed="true"]{background:var(--green);color:var(--bg)}
+#cur{position:fixed;top:0;left:0;width:28px;height:28px;margin:-14px 0 0 -14px;border:1px solid rgba(47,74,58,.4);border-radius:50%;pointer-events:none;z-index:60;opacity:0;transition:opacity .5s,width .3s,height .3s,margin .3s}
+#cur.on{opacity:1}
+#cur.big{width:44px;height:44px;margin:-22px 0 0 -22px}
+@media (hover:none),(pointer:coarse){#cur{display:none}}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .js .rv,.tw .w{opacity:1!important;transform:none!important;filter:none!important}
+  #cur,#particles,.drop{display:none}
+}
+</style>
+<noscript><style>.rv,.tw .w{opacity:1!important;transform:none!important;filter:none!important}#loader{display:none}</style></noscript>
+</head>
+<body>
+<script>document.documentElement.classList.add('js')</script>
+<div id="loader" aria-hidden="true"><i></i></div>
+<div id="bar" aria-hidden="true"></div>
+<div id="cur" aria-hidden="true"></div>
+
+<main>
+<section id="hero">
+  <canvas id="particles" aria-hidden="true"></canvas>
+  <h1 class="tw">برای معلمی<br>که نمی‌خواستیم<br>دلش را بشکنیم</h1>
+  <p class="sub rv">یک عذرخواهی از طرف دانش‌آموزان نهم شهید رجایی</p>
+  <div class="rule rv"></div>
+  <a class="read" href="#hello">خواندن نامه</a>
+</section>
+
+<section id="hello">
+  <div class="wrap">
+    <h2 class="tw">استاد عزیزمان...</h2>
+    <p class="rv">شاید این سایت ساده‌ترین کاری باشد که می‌توانستیم برای گفتن چیزی که گفتنش برایمان سخت است انجام دهیم.</p>
+    <p class="rv">قبل از هر چیز، از شما عذر می‌خواهیم.</p>
+    <p class="rv">می‌دانیم اتفاقی که افتاد، اتفاق خوبی نبود و چیزی که شما روی میزتان دیدید، می‌توانست باعث ناراحتی، عصبانیت و حتی دل‌شکستگی شما شود.</p>
+    <p class="rv">اما چیزی که بیشتر از همه ناراحتمان می‌کند، این است که شما از ما برداشت بدی پیدا کردید؛ آن هم شما که همیشه به ما اعتماد داشتید، برایمان وقت می‌گذاشتید، با ما شوخی می‌کردید و همیشه از باادب بودن کلاس ما تعریف می‌کردید.</p>
+  </div>
+</section>
+
+<section id="happened">
+  <div class="wrap">
+    <svg class="slip rv" viewBox="0 0 120 20" aria-hidden="true"><path d="M2 12 C 18 2, 30 18, 46 9 S 74 4, 82 12 S 104 16, 118 7"/></svg>
+    <h2 class="tw">آنچه اتفاق افتاد</h2>
+    <p class="rv">ما نمی‌خواهیم اتفاقی را که افتاده انکار کنیم.</p>
+    <p class="rv">واقعیت این است که یکی از بچه‌ها از روی نادانی، یک تصویر نامناسب کشیده بود؛ تصویری که نه برای شما بود و نه برای هیچ‌کس دیگر، و اصلاً در روزی دیگر کشیده شده بود. هیچ قصد توهین یا بی‌احترامی‌ای پشت آن نبود. آن کاغذ به شکلی کاملاً اتفاقی روی میز شما قرار گرفت و هیچ‌کدام از ما متوجه نشدیم که قرار است شما آن را ببینید.</p>
+    <p class="rv">اما حتی اگر نیت بدی پشت آن نبوده باشد، می‌دانیم که نتیجه‌ی کار ناراحت‌کننده بوده است.</p>
+    <p class="rv">و بابت همین، از شما عذر می‌خواهیم.</p>
+  </div>
+</section>
+
+<section id="grade">
+  <div id="ghost" aria-hidden="true">نمره</div>
+  <div class="wrap">
+    <h2 class="tw">اما این سایت برای نمره نیست</h2>
+    <p class="rv">استاد، شاید مهم‌ترین چیزی که می‌خواهیم بدانید همین باشد.</p>
+    <p class="rv">ما این سایت را نساختیم تا از شما بخواهیم نمره‌های امتحان را تغییر دهید، انضباطمان را بهتر کنید یا تصمیمی را که گرفته‌اید عوض کنید.</p>
+    <p class="rv">ما فقط می‌خواستیم حرفی را بزنیم که شاید در کلاس نتوانستیم درست بیانش کنیم.</p>
+    <p class="rv">اگر قرار باشد بابت اشتباهمان تذکر بگیریم، آن را می‌پذیریم؛ چون می‌دانیم اشتباه ما باعث ناراحتی شما شده است.</p>
+    <p class="rv">چیزی که برای ما مهم‌تر از نمره است، این است که بدانیم معلمی که تا قبل از این اتفاق این‌قدر به ما محبت داشت، هنوز ما را همان دانش‌آموزانی می‌داند که قبل از این اتفاق می‌شناخت.</p>
+    <p class="rv key">ما فقط ناراحتیم که شما از دست ما ناراحتید.</p>
+  </div>
+</section>
+
+<section id="teacher">
+  <div class="wrap">
+    <!-- اگر عکس مجاز از معلم داشتید، این بلوک را از حالت کامنت دربیاورید و آدرس عکس را بگذارید (بدون فیلتر):
+    <figure class="photo rv"><img src="teacher.jpg" alt="" width="288" height="360" loading="lazy"></figure>
+    -->
+    <h2 class="tw">شما برای ما فقط معلم ریاضی نبودید</h2>
+    <p class="rv">شاید برای شما این اتفاق فقط یک اتفاق تلخ در یک روز مدرسه باشد.</p>
+    <p class="rv">اما برای ما، ناراحتی شما بیشتر از چیزی است که بتوانیم با چند جمله توضیحش دهیم.</p>
+    <p class="rv">ما قبل از شروع سال تحصیلی تلاش کردیم شما معلم ریاضی ما باشید.</p>
+    <p class="rv">چون شما را دوست داشتیم.</p>
+    <p class="rv">چون از نحوه‌ی تدریستان راضی بودیم.</p>
+    <p class="rv">چون احساس می‌کردیم معلمی داریم که هم درسش را خوب بلد است و هم برای دانش‌آموزانش اهمیت قائل است.</p>
+    <p class="rv">شما همیشه از ادب کلاس ما تعریف می‌کردید و ما هم به این حرف افتخار می‌کردیم.</p>
+    <p class="rv">برای همین، اینکه امروز احساس کنیم تصویری کاملاً متفاوت از ما در ذهن شما ایجاد شده، واقعاً برایمان سنگین است.</p>
+    <p class="rv">شاید نتوانیم اتفاقی را که افتاده پاک کنیم، اما می‌توانیم صادقانه بگوییم که از اینکه باعث شدیم چنین احساسی پیدا کنید، متأسفیم.</p>
+  </div>
+</section>
+
+<section id="forget">
+  <div class="wrap">
+    <h2 class="tw">ما انتظار نداریم فراموش کنید</h2>
+    <p class="rv" data-d="0">ما نمی‌خواهیم بگوییم ناراحت نشوید یا حق نداشتید عصبانی شوید.</p>
+    <p class="rv" data-d="1">شما حق داشتید ناراحت شوید.</p>
+    <p class="rv" data-d="2">اگر جای شما بودیم، شاید ما هم از دیدن چنین چیزی روی میزمان ناراحت می‌شدیم.</p>
+    <p class="rv" data-d="3">فقط امیدواریم بدانید که چیزی که دیدید، نماینده‌ی شخصیت، احترام و علاقه‌ی ما نسبت به شما نبود.</p>
+    <p class="rv" data-d="4">و امیدواریم یک اشتباه باعث نشود تمام خوبی‌هایی که بین ما و شما در طول این مدت وجود داشت، بی‌ارزش شود.</p>
+  </div>
+</section>
+
+<section id="wish">
+  <div class="glow" aria-hidden="true"></div>
+  <div class="wrap">
+    <h2 class="tw">فقط یک آرزو</h2>
+    <p class="rv">ما امیدواریم روزی دوباره بتوانیم وارد کلاس شویم و احساس کنیم معلممان دیگر از ما دلگیر نیست.</p>
+    <p class="rv">اگر دوباره با ما مثل قبل شوخی کنید، اگر دوباره با همان آرامش برایمان درس بدهید و اگر دوباره احساس کنیم که هنوز به ما اعتماد دارید، برای ما از هر نمره‌ای باارزش‌تر است.</p>
+  </div>
+</section>
+
+<section id="lesson">
+  <div class="wrap">
+    <h2 class="tw">یک اشتباه، تمام شخصیت یک انسان نیست</h2>
+    <p class="rv">ما دانش‌آموزیم.</p>
+    <p class="rv">هنوز خیلی چیزها را یاد نگرفته‌ایم و گاهی از روی نادانی یا هیجان کاری می‌کنیم که بعداً می‌فهمیم درست نبوده است.</p>
+    <p class="rv">این اتفاق هم برای ما تبدیل به یک درس شد.</p>
+    <p class="rv">درس اینکه حتی یک شوخی یا یک کار به ظاهر ساده می‌تواند به شخص دیگری آسیب بزند.</p>
+    <p class="rv">درس اینکه باید بیشتر مراقب رفتارمان باشیم.</p>
+    <p class="rv">و شاید مهم‌تر از همه، درس اینکه احترام به معلم و کسی که برای ما زحمت می‌کشد، چیزی نیست که بتوانیم آن را ساده بگیریم.</p>
+  </div>
+</section>
+
+<section id="ayah">
+  <div class="wrap">
+    <svg class="star rv" viewBox="0 0 34 34" aria-hidden="true"><path d="M17 2l4 8.5 9.3-1.2-5.6 7.7 5.6 7.7-9.3-1.2L17 32l-4-8.5-9.3 1.2 5.6-7.7-5.6-7.7 9.3 1.2z"/></svg>
+    <h2 class="rv">یک یادآوری از قرآن</h2>
+    <span class="ln rv" aria-hidden="true"></span>
+    <p class="quran rv" lang="ar" dir="rtl">وَلْیَعْفُوا وَلْیَصْفَحُوا ۗ أَلَا تُحِبُّونَ أَن یَغْفِرَ اللَّهُ لَکُمْ</p>
+    <p class="ref rv">سوره نور، آیه ۲۲</p>
+    <p class="tr rv">ببخشند و گذشت کنند؛ آیا دوست ندارید که خدا شما را بیامرزد؟</p>
+    <!-- بخش سخن رهبر شهید: متن دقیقِ یک جمله را از khamenei.ir کپی کن، جای متن زیر بگذار و صفت hidden را بردار -->
+    <div class="rahbar" hidden>
+      <p class="qt rv">«متن دقیق جمله در اینجا»</p>
+      <p class="who rv">امام شهید، آیت‌الله سید علی خامنه‌ای</p>
+    </div>
+  </div>
+</section>
+
+<section id="last">
+  <div class="wrap">
+    <h2 class="tw">و حرف آخر...</h2>
+    <p class="rv">استاد عزیز،</p>
+    <p class="rv">اگر امروز از ما ناراحتید، حق دارید.</p>
+    <p class="rv">اما فقط می‌خواستیم قبل از اینکه سال تحصیلی تمام شود و هرکدام از ما به مسیر دیگری برویم، یک بار صادقانه حرفمان را بزنیم.</p>
+    <p class="rv">ما نمی‌خواهیم شما یک اتفاق بد را به خاطر ما فراموش کنید.</p>
+    <p class="rv">فقط می‌خواهیم خوبی‌هایی را که قبل از آن اتفاق بین ما بود، به خاطر بیاورید.</p>
+    <p class="rv">شما برای ما معلمی بودید که دوست داشتیم امسال هم داشته باشیم.</p>
+    <p class="rv">معلمی بودید که از بودنش در کلاس خوشحال بودیم.</p>
+    <p class="rv">و هنوز هم هستیم.</p>
+    <p class="rv">ما بابت اتفاقی که افتاد متأسفیم.</p>
+    <p class="rv">از شما عذر می‌خواهیم.</p>
+    <p class="rv">نه برای گرفتن چیزی، بلکه فقط برای اینکه دل شما را شکستیم.</p>
+  </div>
+</section>
+
+<section id="end">
+  <div id="spread" aria-hidden="true"></div>
+  <p class="quote rv">گاهی یک عذرخواهی برای برگرداندن یک نمره نیست؛<br>برای برگرداندن یک رابطه‌ی خوب است.</p>
+  <p class="sign rv">با احترام و از صمیم قلب،<br>دانش‌آموزان نهم شهید رجایی</p>
+  <button class="send rv" id="send" type="button">از طرف ما، با احترام</button>
+  <p class="thanks" id="thanks" role="status" aria-live="polite"></p>
+  <button class="heart" id="heart" type="button" aria-label="یک قلب برای شما">❤️</button>
+  <p class="credit">🖋️ طراح سایت: امیر مهدی مردانی</p>
+</section>
+</main>
+
+<audio id="song" src="music.mp3" loop preload="none"></audio>
+<button id="music" type="button" aria-pressed="false">🎵 موسیقی آرام</button>
+
+<script>
+(function(){
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var $ = function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))};
+
+  /* split headings into words (keeps Persian letter joining intact) */
+  $('.tw').forEach(function(el){
+    var label = el.textContent.replace(/\s+/g,' ').trim();
+    el.setAttribute('aria-label', label);
+    var nodes = Array.prototype.slice.call(el.childNodes);
+    el.textContent = '';
+    nodes.forEach(function(n){
+      if(n.nodeType === 3){
+        n.textContent.split(/(\s+)/).forEach(function(t){
+          if(!t) return;
+          if(/^\s+$/.test(t)){ el.appendChild(document.createTextNode(' ')); return; }
+          var s = document.createElement('span'); s.className='w'; s.setAttribute('aria-hidden','true'); s.textContent=t; el.appendChild(s);
+        });
+      } else el.appendChild(n.cloneNode(true));
+    });
+  });
+
+  function typeIn(el){
+    var ws = $('.w', el), i = 0;
+    (function next(){ if(i<ws.length){ ws[i++].classList.add('on'); setTimeout(next, reduce?0:260); } })();
+  }
+
+  /* loader -> ready */
+  var started = false;
+  function start(){
+    if(started) return; started = true;
+    document.body.classList.add('ready');
+    setTimeout(function(){ var h=document.querySelector('#hero h1'); typeIn(h); }, 500);
+    setTimeout(function(){ $('#hero .rv').forEach(function(e,i){ setTimeout(function(){e.classList.add('in')}, i*500); }); }, 1900);
+  }
+  window.addEventListener('load', function(){ setTimeout(start, 700); });
+  setTimeout(start, 3500);
+
+  /* reveal on scroll */
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      var el = e.target; io.unobserve(el);
+      if(el.classList.contains('tw')) typeIn(el);
+      else {
+        var d = el.getAttribute('data-d');
+        if(d) el.style.transitionDelay = (d*0.35)+'s';
+        el.classList.add('in');
+      }
+    });
+  }, {threshold:.25, rootMargin:'0px 0px -8% 0px'});
+  $('.rv, .tw').forEach(function(el){ if(!el.closest('#hero')) io.observe(el); });
+
+  /* warm light for the wish section */
+  var wish = document.getElementById('wish');
+  new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting) wish.classList.add('lit'); }); }, {threshold:.4}).observe(wish);
+
+  /* scroll: progress bar + ghost word + gentle parallax */
+  var bar = document.getElementById('bar'), ghost = document.getElementById('ghost'), grade = document.getElementById('grade');
+  var ticking = false;
+  function onScroll(){
+    var h = document.documentElement.scrollHeight - innerHeight;
+    bar.style.transform = 'scaleX(' + (h>0 ? scrollY/h : 0) + ')';
+    if(!reduce){
+      var r = grade.getBoundingClientRect(), p = (innerHeight - r.top) / (innerHeight + r.height);
+      p = Math.max(0, Math.min(1, p));
+      var fade = p < .55 ? 1 : Math.max(0, 1 - (p - .55) / .35);
+      ghost.style.opacity = (.07 * fade).toFixed(3);
+      ghost.style.transform = 'translate(-50%,calc(-50% + ' + ((p - .5) * -60).toFixed(1) + 'px))';
+    }
+    ticking = false;
+  }
+  addEventListener('scroll', function(){ if(!ticking){ ticking = true; requestAnimationFrame(onScroll); } }, {passive:true});
+  onScroll();
+
+  /* hero particles */
+  var cv = document.getElementById('particles');
+  if(cv && !reduce){
+    var cx = cv.getContext('2d'), W, H, dots = [], dpr = Math.min(devicePixelRatio||1, 2), run = true;
+    function size(){ W = cv.clientWidth; H = cv.clientHeight; cv.width = W*dpr; cv.height = H*dpr; cx.setTransform(dpr,0,0,dpr,0,0); }
+    size(); addEventListener('resize', size);
+    var n = innerWidth < 600 ? 22 : 38;
+    for(var i=0;i<n;i++) dots.push({x:Math.random(),y:Math.random(),r:Math.random()*1.8+.6,s:Math.random()*.00006+.00002,a:Math.random()*.25+.08,p:Math.random()*6.28});
+    new IntersectionObserver(function(e){ run = e[0].isIntersecting; if(run) draw(); }).observe(cv);
+    function draw(t){
+      if(!run) return;
+      cx.clearRect(0,0,W,H);
+      dots.forEach(function(d){
+        d.y -= d.s * 16; if(d.y < -.05){ d.y = 1.05; d.x = Math.random(); }
+        var x = d.x*W + Math.sin((t||0)/3000 + d.p)*12, y = d.y*H;
+        var g = cx.createRadialGradient(x,y,0,x,y,d.r*6);
+        g.addColorStop(0,'rgba(184,154,90,'+d.a+')'); g.addColorStop(1,'rgba(184,154,90,0)');
+        cx.fillStyle = g; cx.beginPath(); cx.arc(x,y,d.r*6,0,6.28); cx.fill();
+      });
+      requestAnimationFrame(draw);
+    }
+    draw();
+  }
+
+  /* cursor ring (desktop only) */
+  var cur = document.getElementById('cur');
+  if(matchMedia('(hover:hover) and (pointer:fine)').matches && !reduce){
+    var tx=0, ty=0, x=0, y=0;
+    addEventListener('mousemove', function(e){ tx=e.clientX; ty=e.clientY; cur.classList.add('on'); }, {passive:true});
+    document.addEventListener('mouseleave', function(){ cur.classList.remove('on'); });
+    $('a,button').forEach(function(b){
+      b.addEventListener('mouseenter', function(){ cur.classList.add('big'); });
+      b.addEventListener('mouseleave', function(){ cur.classList.remove('big'); });
+    });
+    (function loop(){ x += (tx-x)*.16; y += (ty-y)*.16; cur.style.transform = 'translate('+x+'px,'+y+'px)'; requestAnimationFrame(loop); })();
+  }
+
+  /* closing button */
+  var send = document.getElementById('send'), thanks = document.getElementById('thanks'), spread = document.getElementById('spread');
+  send.addEventListener('click', function(){
+    spread.classList.remove('go'); void spread.offsetWidth; spread.classList.add('go');
+    thanks.textContent = '🤍 سپاسگزاریم که وقت گذاشتید و تا انتها خواندید.';
+    thanks.classList.add('show');
+  });
+
+
+  /* heart: a gentle rain of hearts */
+  var heart = document.getElementById('heart');
+  if(heart) heart.addEventListener('click', function(){
+    thanks.textContent = '🤍 سپاسگزاریم که وقت گذاشتید و تا انتها خواندید.'; thanks.classList.add('show');
+    if(reduce) return;
+    if(document.querySelectorAll('.drop').length > 90) return;
+    var set = ['❤️','❤️','🤍','💚'], n = innerWidth < 600 ? 28 : 46;
+    for(var i=0;i<n;i++){
+      var d = document.createElement('span');
+      d.className = 'drop'; d.setAttribute('aria-hidden','true');
+      d.textContent = set[Math.floor(Math.random()*set.length)];
+      d.style.left = (Math.random()*96 + 2) + 'vw';
+      d.style.fontSize = (Math.random()*18 + 14) + 'px';
+      d.style.setProperty('--dx', (Math.random()*80 - 40) + 'px');
+      d.style.setProperty('--r', (Math.random()*80 - 40) + 'deg');
+      d.style.animationDuration = (Math.random()*2.5 + 3.5) + 's';
+      d.style.animationDelay = (Math.random()*1.6) + 's';
+      d.addEventListener('animationend', function(){ this.remove(); });
+      document.body.appendChild(d);
+    }
+  });
+
+  /* music: plays "music.mp3" next to this file if it exists, otherwise a soft built-in piano-like piece.
+     Starts only after the visitor taps "خواندن نامه" (browsers block sound before a tap). */
+  var mb = document.getElementById('music'), song = document.getElementById('song');
+  var ac, master, bus, timer, step = 0, on = false, mode = '', fadeT;
+  var prog = [[220,261.63,329.63,440],[174.61,220,261.63,349.23],[130.81,164.81,196,261.63],[196,246.94,293.66,392]];
+  var pat = [0,1,2,3,2,1,2,1];
+  function ui(){ mb.setAttribute('aria-pressed', on); mb.textContent = on ? '🔇 قطع موسیقی' : '🎵 موسیقی آرام'; }
+  function buildSynth(){
+    var AC = window.AudioContext || window.webkitAudioContext; if(!AC) return false;
+    ac = new AC(); master = ac.createGain(); master.gain.value = 0;
+    var lp = ac.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 1400;
+    var dl = ac.createDelay(1); dl.delayTime.value = .46;
+    var fb = ac.createGain(); fb.gain.value = .38;
+    bus = ac.createGain();
+    bus.connect(lp); bus.connect(dl); dl.connect(fb); fb.connect(dl); dl.connect(lp);
+    lp.connect(master); master.connect(ac.destination);
+    return true;
+  }
+  function note(f, t, d, v){
+    var o = ac.createOscillator(), g = ac.createGain();
+    o.type = 'triangle'; o.frequency.value = f;
+    g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(v, t + .03);
+    g.gain.exponentialRampToValueAtTime(.0001, t + d);
+    o.connect(g); g.connect(bus); o.start(t); o.stop(t + d + .05);
+  }
+  function tick(){
+    if(!on || mode !== 'synth') return;
+    if(ac.state !== 'running'){ timer = setTimeout(tick, 620); return; }
+    var ch = prog[Math.floor(step/8) % 4], i = step % 8, t = ac.currentTime + .05;
+    note(ch[pat[i]], t, 2.6, .05 + Math.random()*.02);
+    if(i === 0) note(ch[0]/2, t, 4.5, .08);
+    step++; timer = setTimeout(tick, 620);
+  }
+  function synthStart(){
+    if(!ac && !buildSynth()) return;
+    mode = 'synth'; ac.resume();
+    master.gain.cancelScheduledValues(ac.currentTime); master.gain.linearRampToValueAtTime(.7, ac.currentTime + 3);
+    clearTimeout(timer); tick();
+  }
+  function fadeSong(to, done){
+    clearInterval(fadeT);
+    fadeT = setInterval(function(){
+      var v = song.volume, d = to - v;
+      if(Math.abs(d) < .03){ song.volume = to; clearInterval(fadeT); if(done) done(); return; }
+      song.volume = Math.max(0, Math.min(1, v + (d > 0 ? .03 : -.04)));
+    }, 100);
+  }
+  var userStopped = false, unlockOn = true;
+  function useSynth(){ if(on || userStopped) return; on = true; ui(); synthStart(); }
+  function attempt(){
+    if(on || userStopped) return;
+    song.volume = 0;
+    var p; try{ p = song.play(); }catch(e){}
+    if(p && p.then){
+      p.then(function(){ if(userStopped){ song.pause(); return; } on = true; mode = 'file'; ui(); fadeSong(.6); })
+       .catch(function(err){ if(err && err.name === 'NotAllowedError') return; useSynth(); });
+    } else useSynth();
+  }
+  function stopMusic(){
+    on = false; ui();
+    if(mode === 'file') fadeSong(0, function(){ song.pause(); });
+    else if(mode === 'synth'){
+      clearTimeout(timer);
+      master.gain.cancelScheduledValues(ac.currentTime); master.gain.linearRampToValueAtTime(0, ac.currentTime + 1.5);
+    }
+  }
+  /* the browser only allows sound after the first tap, so we try at load and again on the first touch/click/key */
+  var evs = ['pointerup','touchend','click','keydown'];
+  function unlock(ev){
+    if(ev && ev.target && ev.target.closest && ev.target.closest('#music')) return;
+    if(userStopped){ release(); return; }
+    if(!on) attempt();
+    else if(mode === 'synth' && ac && ac.state !== 'running') ac.resume();
+    else if(mode === 'file' && song.paused){ song.play().then(function(){ fadeSong(.6); }).catch(function(){}); }
+    setTimeout(function(){
+      var running = (mode === 'file' && !song.paused) || (mode === 'synth' && ac && ac.state === 'running');
+      if(running) release();
+    }, 400);
+  }
+  function release(){ if(!unlockOn) return; unlockOn = false; evs.forEach(function(e){ document.removeEventListener(e, unlock, true); }); }
+  evs.forEach(function(e){ document.addEventListener(e, unlock, true); });
+  addEventListener('load', function(){ setTimeout(attempt, 400); });
+  mb.addEventListener('click', function(ev){
+    ev.stopPropagation();
+    if(on){ userStopped = true; stopMusic(); }
+    else { userStopped = false; if(mode === 'file'){ song.play().then(function(){ on = true; ui(); fadeSong(.6); }).catch(function(){ useSynth(); }); } else if(mode === 'synth'){ on = true; ui(); synthStart(); } else attempt(); }
+  });
+})();
+</script>
+</body>
+</html>
